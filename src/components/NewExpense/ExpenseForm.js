@@ -24,7 +24,7 @@ const ExpenseForm = (props) => {
     
         const expenseData = {
             title: enteredTitle,
-            amount: enteredAmount,
+            amount: +enteredAmount,
             date: new Date(enteredDate)
         }
     
@@ -89,6 +89,7 @@ const ExpenseForm = (props) => {
                 </div>
             </div>
             <div className="new-expense__actions">
+                <button type="button" onClick={props.onCancel}>Cancel</button> {/*Set the type to button so it doesn't submit the form. Because the default behaviour of the button is to submit onclick*/}
                 <button type="submit">Add Expense</button>
             </div>
         </form>

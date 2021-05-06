@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import ExpenseItem from './ExpenseItem';
+import ExpensesList from './ExpensesList';
 import ExpensesFilter from './ExpenseFilter';
 import Card from '../UI/Card'
+import ExpensesChart from './ExpensesChart'
 import './Expenses.css'
 
 const Expenses = (props) => {
@@ -16,18 +17,6 @@ const Expenses = (props) => {
         return expense.date.getFullYear().toString() === filteredYear;
     })
 
-    let expensesContent = <p>No expenses found.</p>;
-    if (filteredExpenses.length > 0){
-        expensesContent = filteredExpenses.map((expense) => (
-            <ExpenseItem 
-                key={expense.id}
-                title={expense.title} 
-                amount={expense.amount} 
-                date={expense.date}
-            />
-        ))
-    }
-
     return (
         <div>
             <Card className="expenses">
@@ -35,7 +24,9 @@ const Expenses = (props) => {
                     selectedYear={filteredYear} 
                     onChangeFilter={filterChangeHandler}
                 />
-                {expensesContent}
+                <ExpensesChart expenses={filteredExpenses}/>
+                <ExpensesList items={filteredExpenses}/>
+                {/* {expensesContent} */}
                 {/* 
                 THESE ARE THE ALTERNATIVES TO THE SINGLE LINE ABOVE. The line above simply removes the logic from this JSX part
                 {filteredExpenses.length === 0 && <p>No expenses found</p>} This is a JS trick where the && acts as such: checks first condition, if it's met, it runs what's after the '&&' *
