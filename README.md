@@ -1,5 +1,7 @@
 
-<h1 style="text-align: center;">React.js Expense Tracker</h1>
+<div align="center">
+    <h1>React.js Expense Tracker</h1>
+</div>
 
 This is an expenses tracker using React.js, done as a code-along with Maximilian Schwarzmüller on his [Udemy web course](https://www.udemy.com/course/react-the-complete-guide-incl-redux/).
 
